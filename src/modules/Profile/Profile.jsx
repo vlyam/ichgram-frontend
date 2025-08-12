@@ -107,7 +107,15 @@ const Profile = () => {
     }
 
     if (!userData) {
-        return <div>User profile not found</div>;
+        return (
+            <div className={styles.profile}>
+                <StateBanner
+                    emptyState
+                    title="User profile not found"
+                    subtitle="The user address was entered incorrectly."
+                />
+            </div>
+        );
     }
 
     const username = userData.username || "";
