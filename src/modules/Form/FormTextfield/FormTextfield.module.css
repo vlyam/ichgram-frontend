@@ -1,0 +1,107 @@
+/*FORM__TEXTFIELD*/
+.form__textfield {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+}
+
+.form__textfield input {
+    width: 100%;
+    height: 38px;
+    padding: 0px 8px;
+    font-family: "Roboto", sans-serif;
+    background-color: #FAFAFA;
+    border: 1px solid var(--fourth-color);
+    color: var(--second-color);
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    outline: none;
+}
+
+.form__textfield textarea {
+    width: 100%;
+    padding: 0px 8px;
+    font-family: "Roboto", sans-serif;
+    background-color: #FAFAFA;
+    border: 1px solid var(--fourth-color);
+    color: var(--second-color);
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    outline: none;
+}
+
+.form__textfield input[disabled],
+.form__textfield textarea[disabled] {
+    opacity: 0.5;
+}
+
+.form__textfield input::placeholder,
+.form__textfield textarea::placeholder {
+    color: var(--third-color);
+    font-style: normal;
+    font-weight: 400;
+}
+
+.form__textfield label {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--second-color);
+}
+
+.form__textfield--profile-theme input {
+    width: 100%;
+    height: 42px;
+    padding: 0px 16px;
+    background-color: #FFF;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+.form__textfield--profile-theme textarea {
+    width: 100%;
+    padding: 10px 16px;
+    background-color: #FFF;
+    border-radius: 12px;
+    font-size: 14px;
+    resize: none;
+}
+
+.form__textfield--profile-theme.form__textfield--link input {
+    padding: 0px 16px 0px 36px;
+    color: var(--sixth-color);
+    font-weight: 600;
+}
+
+.form__textfield--profile-theme.form__textfield--link::before {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.86287 2.56149L5.47687 1.94749C6.08368 1.34081 6.90665 1.00003 7.76472 1.00012C8.62279 1.00022 9.44568 1.34117 10.0524 1.94799C10.659 2.5548 10.9998 3.37777 10.9997 4.23584C10.9996 5.09392 10.6587 5.91681 10.0519 6.52349L9.43837 7.13699M7.13687 9.43849L6.52287 10.0525C5.91605 10.6592 5.09309 11 4.23501 10.9999C3.37694 10.9998 2.55405 10.6588 1.94737 10.052C1.34068 9.44517 0.999906 8.62221 1 7.76414C1.00009 6.90606 1.34105 6.08317 1.94787 5.47649L2.56137 4.86299' stroke='%2300376B' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M4.23535 7.76447L7.76435 4.23547' stroke='%2300376B' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-size: 12px;
+    background-position: center;
+    position: absolute;
+    left: 17px;
+    bottom: 15px;
+}
+
+.form__textfield-counter {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 130%;
+    color: var(--third-color);
+    position: absolute;
+    bottom: 10px;
+    right: 16px;
+}
+
+/*END FORM__TEXTFIELD*/

@@ -1,0 +1,286 @@
+/*AUTH*/
+.auth {
+    padding: 90px 78px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.auth__login,
+.auth__signup,
+.auth__reset,
+.auth__verification {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 32px;
+}
+
+.auth__illustration {
+    width: 302px;
+}
+
+.auth__illustration-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    position: relative;
+}
+
+.auth__logo {
+    display: block;
+    width: 181px;
+    height: 40px;
+    margin: 20px 0 10px;
+}
+
+.auth__logo svg {
+    width: 100%;
+}
+
+.auth__title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 120%;
+    color: var(--second-color);
+    text-align: center;
+}
+
+.auth__subtitle {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 120%;
+    color: var(--third-color);
+    text-align: center;
+}
+
+.auth__description {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    color: var(--third-color);
+    text-align: center;
+}
+
+.auth__information {
+    margin-top: 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 120%;
+    text-align: center;
+    color: var(--third-color);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.auth__information a {
+    font-style: normal;
+    color: var(--sixth-color);
+    text-decoration: none;
+    transition: color 400ms ease;
+}
+
+.auth__information a:hover {
+    color: var(--second-color);
+}
+
+.auth__verified-message {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 120%;
+    text-align: center;
+    color: #017616;
+}
+
+.auth__form-container {
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.auth__form {
+    padding: 30px 40px;
+    position: relative;
+    border: 1px solid var(--fourth-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.auth__reset .auth__form {
+    padding: 30px 40px 80px;
+}
+
+.auth__additional {
+    padding: 26px;
+    border: 1px solid var(--fourth-color);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--second-color);
+    text-align: center;
+}
+
+.auth__additional a {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--main-color);
+    text-decoration: none;
+    transition: color 400ms ease;
+}
+
+.auth__additional a:hover {
+    color: var(--second-color);
+}
+
+.auth__link {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    text-decoration: none;
+    color: var(--sixth-color);
+    transition: color 400ms ease;
+}
+
+.auth__link.auth__link--accent-color {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    color: var(--second-color);
+    transition: color 400ms ease;
+}
+
+.auth__link.auth__link--button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 44px;
+    text-align: center;
+    background-color: #FAFAFA;
+    border-top: var(--fourth-color);
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    color: var(--second-color);
+    transition: color 400ms ease;
+    cursor: pointer;
+}
+
+.auth__or-block {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 15px 0px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: var(--third-color);
+    text-align: center;
+}
+
+.auth__or-block-text {
+    margin: 0 18px;
+}
+
+.auth__or-block::before,
+.auth__or-block::after {
+    content: "";
+    display: block;
+    flex: 1 1 auto;
+    height: 1px;
+    background-color: var(--fourth-color);
+}
+
+.auth__link:hover {
+    color: var(--main-color);
+}
+
+.auth__resend {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.auth__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    font-family: "Roboto", sans-serif;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    padding: 8px 36px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 130%;
+    color: var(--second-color);
+    background-color: var(--fifth-color);
+    position: relative;
+    transition: opacity 400ms ease;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.auth__button:hover {
+    opacity: 0.7;
+}
+
+.auth__button[disabled] {
+    pointer-events: none;
+    opacity: 0.2;
+}
+
+.auth__trouble-icon {
+    width: 94px;
+    height: 94px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 2px solid var(--second-color);
+}
+
+.auth__trouble-icon::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 47px;
+    background-image: url("data:image/svg+xml,%3Csvg width='38' height='49' viewBox='0 0 38 49' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.99895 17.996V10.998C8.99895 8.34588 10.0525 5.80234 11.9279 3.92698C13.8032 2.05162 16.3468 0.998047 18.9989 0.998047C21.6511 0.998047 24.1947 2.05162 26.07 3.92698C27.9454 5.80234 28.9989 8.34588 28.9989 10.998V17.996M31.9309 48.001H6.06495C5.40361 48.0053 4.74791 47.8792 4.1353 47.63C3.52269 47.3808 2.96517 47.0134 2.49456 46.5487C2.02395 46.084 1.64947 45.5312 1.39251 44.9218C1.13555 44.3124 1.00114 43.6584 0.996948 42.997V24.005C1.00101 23.3436 1.13532 22.6895 1.39222 22.08C1.64913 21.4705 2.02358 20.9175 2.49421 20.4528C2.96483 19.988 3.5224 19.6205 4.13507 19.3712C4.74775 19.122 5.40352 18.9958 6.06495 19H31.9299C32.5912 18.996 33.2467 19.1222 33.8591 19.3714C34.4716 19.6207 35.0289 19.9882 35.4993 20.4528C35.9698 20.9175 36.3441 21.4703 36.6008 22.0796C36.8576 22.6889 36.9919 23.3428 36.9959 24.004V42.996C36.9919 43.6573 36.8576 44.3112 36.6008 44.9205C36.3441 45.5298 35.9698 46.0826 35.4993 46.5473C35.0289 47.0119 34.4716 47.3794 33.8591 47.6287C33.2467 47.8779 32.5912 48.0041 31.9299 48L31.9309 48.001Z' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media (max-width: 768px) {
+    .auth {
+        padding: 35px 20px;
+    }
+
+    .auth__illustration {
+        display: none;
+    }
+}
+
+/*END AUTH*/

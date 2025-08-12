@@ -1,0 +1,41 @@
+/*POST-MENU*/
+.post-menu {
+    width: 400px;
+    padding: 0;
+    background-color: #FFF;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.post-menu-button {
+    font-family: "Roboto", sans-serif;
+    text-decoration: none;
+    border: none;
+    border-bottom: 1px solid var(--fourth-color);
+    outline: none;
+    width: 100%;
+    padding: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--second-color);
+    background-color: #FFF;
+    transition: background-color 400ms ease;
+    cursor: pointer;
+}
+
+.post-menu-button:last-child {
+    border: none;
+}
+
+.post-menu-button:hover {
+    background-color: var(--fifth-color);
+}
+
+.post-menu-button.post-menu-button--accent-color {
+    color: #ED4956;
+    font-weight: bold;
+}
+
+/*END POST-MENU*/

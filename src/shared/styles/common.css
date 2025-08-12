@@ -1,0 +1,18 @@
+body.body__no-scroll {
+    overflow: hidden;
+}
+
+.app {
+    font-family: "Roboto", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.wrapper {
+    display: flex;
+    flex: 1 1 auto;
+}

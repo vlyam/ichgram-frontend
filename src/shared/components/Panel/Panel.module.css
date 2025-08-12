@@ -1,0 +1,45 @@
+/*PANEL*/
+.panel {
+    position: absolute;
+    inset: 0;
+    pointer-events: auto;
+    background: rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    transition: background 0.3s ease-in-out;
+    z-index: 1;
+
+    display: flex;
+    justify-content: flex-start;
+}
+
+.panel__content {
+    position: fixed;
+    top: 0;
+    background: #FFF;
+    width: 400px;
+    height: 100%;
+    overflow: auto;
+    border-radius: 0px 16px 16px 0px;
+    box-shadow: 4px 0px 24px rgba(0, 0, 0, 0.15);
+
+    width: 0px;
+    transition: width 0.3s ease-in-out;
+}
+
+.panel__content--animate {
+    width: 400px;
+}
+
+.panel__content--closing {
+    width: 0px;
+}
+
+@media (max-width: 768px) {
+    .panel__content,
+    .panel__content--animate {
+        width: calc(100% - 90px);
+    }
+}
+
+
+/*END PANEL*/

@@ -1,0 +1,58 @@
+/*FORM__NOTIFICATION*/
+.form__notification {
+    width: 100%;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    line-height: 140%;
+    border-radius: 6px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.form__notification.form__notification--success {
+    background-color: #00b3b5;
+    color: #fff;
+}
+
+.form__notification.form__notification--error {
+    background-color: #a7000e;
+
+}
+
+@media (max-width: 1440px) {
+    .form__notification {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .form__notification {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 992px) {
+    .form__notification {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .form__notification {
+        font-size: 14px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 400px) {
+    .form__notification {
+        font-size: 13px;
+    }
+}
+
+/*END FORM__NOTIFICATION*/

@@ -1,0 +1,38 @@
+/*ARTICLES*/
+.articles {
+    padding: 58px 78px;
+}
+
+.articles__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -15px
+}
+
+.articles__more-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+}
+
+@media (max-width: 1280px) {
+    .articles__more-button {
+        padding-top: 30px;
+    }
+}
+
+@media (max-width: 1440px) {
+    .articles__list {
+        margin: -20px
+    }
+}
+
+@media (max-width: 768px) {
+    .articles {
+        padding: 20px;
+    }
+}
+
+
+/*END ARTICLES*/
