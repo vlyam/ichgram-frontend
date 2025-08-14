@@ -13,6 +13,7 @@ import styles from "./Auth.module.css";
 import appImage from "../../assets/app.png";
 import axios from "../../shared/api/axiosInstance";
 
+import Button from "../../shared/components/Button/Button";
 import IchgramIconLogin from "../../shared/icons/IchgramIconLogin/IchgramIconLogin";
 
 const Auth = ({ mode = "login" }) => {
@@ -28,6 +29,9 @@ const Auth = ({ mode = "login" }) => {
   // состояние для verify
   const [verifyStatus, setVerifyStatus] = useState("loading"); // loading | success | error
   const [verifyMessage, setVerifyMessage] = useState("");
+
+  // состояние для resend
+  const [resendLoading, setResendLoading] = useState(false);
 
   const loginFields = [
     { name: "email", type: "text", placeholder: "Email", required: true },
@@ -65,18 +69,25 @@ const Auth = ({ mode = "login" }) => {
 
   const handleResend = async () => {
     if (!registeredData) return;
-    await dispatch(resendVerification(registeredData.email));
 
-    setResendTimer(30);
-    const interval = setInterval(() => {
-      setResendTimer((prev) => {
-        if (prev <= 1) {
-          clearInterval(interval);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
+    try {
+      setResendLoading(true);
+      await dispatch(resendVerification(registeredData.email));
+      setResendTimer(30);
+      const interval = setInterval(() => {
+        setResendTimer((prev) => {
+          if (prev <= 1) {
+            clearInterval(interval);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setResendLoading(false);
+    }
   };
 
   // Логика верификации email
@@ -204,16 +215,15 @@ const Auth = ({ mode = "login" }) => {
 
               {registeredData && (
                 <div className={styles["auth__resend"]}>
-                  <button
-                    type="button"
-                    className={styles["auth__button"]}
+                  <Button
                     onClick={handleResend}
-                    disabled={resendTimer > 0}
+                    fullWidth
+                    loading={resendLoading || resendTimer > 0}
                   >
                     {resendTimer > 0
                       ? `Try again in ${resendTimer}s`
-                      : "Didn’t get the email? Try again"}
-                  </button>
+                      : "Didn’t get the email?"}
+                  </Button>
                 </div>
               )}
 
