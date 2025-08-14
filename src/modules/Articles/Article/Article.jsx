@@ -13,7 +13,7 @@ import styles from "./Article.module.css";
 // Компонент отдельного поста
 const Article = ({ post, authUserId, setModalPostId }) => {
   const dispatch = useDispatch();
-  const isOwnPost = post.author._id === authUserId;
+  const isOwnPost = post.author?._id === authUserId;
 
   const { isLiked = false, likesCount = 0 } = useSelector(
     (state) => state.like.byPostId[post._id] || {}
@@ -31,13 +31,13 @@ const Article = ({ post, authUserId, setModalPostId }) => {
             <div className={styles["article__avatar-content"]}>
               <img
                 className={styles["article__avatar-image"]}
-                src={post.author.profile_image || defaultAvatarImage}
+                src={post.author?.profile_image || defaultAvatarImage}
                 alt=""
               />
             </div>
           </div>
-          <Link to={`/profile/${post.author._id}`} className={styles.article__title}>
-            {post.author.username}
+          <Link to={`/profile/${post.author?._id}`} className={styles.article__title}>
+            {post.author?.username || "Deleted user"}
           </Link>
           <div className={styles.article__time}>{timeAgo(post.createdAt)}</div>
           <div className={styles.article__follow}>

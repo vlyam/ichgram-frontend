@@ -1,46 +1,35 @@
 import styles from "./PostComment.module.css";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import defaultAvatarImage from "../../../assets/default_avatar_image.png";
 import LikeButton from "../../../shared/components/LikeButton/LikeButton";
 import { Link } from "react-router-dom";
-import axios from "../../../shared/api/axiosInstance";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCommentLikeStatus, toggleCommentLike } from "../../../redux/comment-like/comment-like-thunks";
 
 const PostComment = ({ comment, isAuthorOfPost }) => {
     const { author, text, createdAt, _id, isDescription } = comment;
-    const [likes, setLikes] = useState(0);
-    const [liked, setLiked] = useState(false);
+    const dispatch = useDispatch();
+
+    // Получаем лайки из Redux
+    const { liked, likesCount } = useSelector(
+        (state) => state.commentLike.byCommentId[_id] || {}
+    );
+
+    // Загружаем лайки при монтировании (если это не описание)
     useEffect(() => {
-        if (isDescription) return;
-
-        const fetchLikes = async () => {
-            try {
-                const [{ data: likeData }, { data: countData }] = await Promise.all([
-                    axios.get(`/api/comment-likes/check?commentId=${_id}`),
-                    axios.get(`/api/comment-likes/count?commentId=${_id}`)
-                ]);
-                setLiked(likeData.liked || false);
-                setLikes(countData.count || 0);
-            } catch (err) {
-                console.error("Error getting comment likes:", err);
-            }
-        };
-
-        fetchLikes();
-    }, [_id, isDescription]);
-
-    const handleLikeToggle = async () => {
-        try {
-            const { data } = await axios.post("/api/comment-likes", { commentId: _id });
-            setLiked(data.liked);
-            setLikes((prev) => prev + (data.liked ? 1 : -1));
-        } catch (err) {
-            console.error("Error getting comment likes:", err);
+        if (!isDescription) {
+            dispatch(fetchCommentLikeStatus(_id));
         }
+    }, [_id, isDescription, dispatch]);
+
+    const handleLikeToggle = () => {
+        if (!author?._id) return;
+        dispatch(toggleCommentLike(_id));
     };
 
     // CSS-классы для комментария
     const classNames = [styles["post-comment"]];
-    if (isAuthorOfPost && comment.author._id === isAuthorOfPost) {
+    if (isAuthorOfPost && comment.author?._id === isAuthorOfPost) {
         classNames.push(styles["post-comment--autor"]);
     }
 
@@ -51,7 +40,6 @@ const PostComment = ({ comment, isAuthorOfPost }) => {
         const diffMs = now - created;
         const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
         const diffDays = Math.floor(diffHours / 24);
-
         return diffHours < 24 ? `${diffHours}h` : `${diffDays}d`;
     }, [createdAt]);
 
@@ -74,7 +62,7 @@ const PostComment = ({ comment, isAuthorOfPost }) => {
                                 className={styles["post-comment__autor-title"]}
                                 to={`/profile/${author?._id}`}
                             >
-                                {author?.username}
+                                {author?.username || "Deleted user"}
                             </Link>{" "}
                             {text}
                         </p>
@@ -83,7 +71,9 @@ const PostComment = ({ comment, isAuthorOfPost }) => {
                     <div className={styles["post-comment__information"]}>
                         <div className={styles["post-comment__time"]}>{timeAgo}</div>
                         {!isDescription && (
-                            <div className={styles["post-comment__likes"]}>Likes: {likes}</div>
+                            <div className={styles["post-comment__likes"]}>
+                                Likes: {likesCount || 0}
+                            </div>
                         )}
                     </div>
                 </div>

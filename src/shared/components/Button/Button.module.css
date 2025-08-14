@@ -21,6 +21,11 @@
     color: #FFFFFF;
 }
 
+.button.button--danger-color {
+    background-color: #ab0029;
+    color: #FFFFFF;
+}
+
 .button.button--full-width {
     width: 100%;
 }

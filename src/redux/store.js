@@ -8,6 +8,7 @@ import followReducer from './follow/follow-slice';
 import messagesReducer from './messages/messages-slice';
 import notificationsReducer from "./notifications/notifications-slice";
 import likeReducer from './like/like-slice';
+import commentLikeReducer from './comment-like/comment-like-slice';
 
 // Корневой редьюсер
 const rootReducer = combineReducers({
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   messages: messagesReducer,
   notifications: notificationsReducer,
   like: likeReducer,
+  commentLike: commentLikeReducer,
 });
 
 // Конфигурация persist (сохраняем только auth)

@@ -155,7 +155,7 @@ const EditProfile = () => {
             />
 
             <hr className={styles["edit-profile__divider"]} />
-            
+
             <div className={styles["edit-profile__change-password"]}>
                 <h3>Change the password</h3>
                 <Form
@@ -211,6 +211,35 @@ const EditProfile = () => {
                         }
                     }}
                 />
+            </div>
+
+            <hr className={styles["edit-profile__divider"]} />
+
+            <div className={styles["edit-profile__remove-profile"]}>
+                <Button
+                    dangerColor
+                    onClick={async () => {
+                        const confirmed = window.confirm(
+                            "Are you sure you want to remove your profile? This action cannot be undone."
+                        );
+                        if (!confirmed) return;
+
+                        try {
+                            await axios.delete("/api/users/profile"); // удаление на бэке
+                            // Очистка Redux и токена
+                            dispatch(setUserRedux(null));
+                            localStorage.removeItem("token");
+                            // Редирект на главную или страницу логина
+                            window.location.href = "/login";
+                        } catch (err) {
+                            console.error("Failed to delete profile", err);
+                            alert("Failed to delete profile. Please try again later.");
+                        }
+                    }}
+                >
+                    Remove profile
+                </Button>
+
             </div>
         </div>
     );

@@ -8,6 +8,7 @@ const Button = ({
     type = 'button',
     fullWidth,
     accentColor,
+    dangerColor,
     linkButton,
     loading,
     ...props
@@ -20,6 +21,10 @@ const Button = ({
 
     if (accentColor) {
         classNames.push(styles['button--accent-color']);
+    }
+
+    if (dangerColor) {
+        classNames.push(styles['button--danger-color']);
     }
 
     if (linkButton) {
