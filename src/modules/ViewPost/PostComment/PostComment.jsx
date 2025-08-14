@@ -10,12 +10,12 @@ const PostComment = ({ comment, isAuthorOfPost }) => {
     const { author, text, createdAt, _id, isDescription } = comment;
     const dispatch = useDispatch();
 
-    // Получаем лайки из Redux
-    const { liked, likesCount } = useSelector(
+    // Берём лайки и статус лайка из Redux
+    const { liked = false, likesCount = 0 } = useSelector(
         (state) => state.commentLike.byCommentId[_id] || {}
     );
 
-    // Загружаем лайки при монтировании (если это не описание)
+    // Загружаем статус лайка при монтировании (если это не описание)
     useEffect(() => {
         if (!isDescription) {
             dispatch(fetchCommentLikeStatus(_id));
@@ -72,7 +72,7 @@ const PostComment = ({ comment, isAuthorOfPost }) => {
                         <div className={styles["post-comment__time"]}>{timeAgo}</div>
                         {!isDescription && (
                             <div className={styles["post-comment__likes"]}>
-                                Likes: {likesCount || 0}
+                                Likes: {likesCount.toLocaleString()}
                             </div>
                         )}
                     </div>

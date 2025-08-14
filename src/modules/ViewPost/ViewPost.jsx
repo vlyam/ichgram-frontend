@@ -173,7 +173,7 @@ const ViewPost = ({ postId: propPostId, onClose }) => {
                                         key={comment._id}
                                         comment={comment}
                                         isAuthorOfPost={post.author._id || post.author.id}
-                                        isDescription
+                                        isDescription={comment.isDescription}
                                     />
                                 ))}
                             </div>
