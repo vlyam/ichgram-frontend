@@ -1,7 +1,8 @@
 import styles from "./PostComment.module.css";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import defaultAvatarImage from "../../../assets/default_avatar_image.png";
 import LikeButton from "../../../shared/components/LikeButton/LikeButton";
+import { timeAgo } from "../../../utils/timeAgo";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCommentLikeStatus, toggleCommentLike } from "../../../redux/comment-like/comment-like-thunks";
@@ -33,16 +34,6 @@ const PostComment = ({ comment, isAuthorOfPost }) => {
         classNames.push(styles["post-comment--autor"]);
     }
 
-    // Время публикации
-    const timeAgo = useMemo(() => {
-        const now = new Date();
-        const created = new Date(createdAt);
-        const diffMs = now - created;
-        const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
-        const diffDays = Math.floor(diffHours / 24);
-        return diffHours < 24 ? `${diffHours}h` : `${diffDays}d`;
-    }, [createdAt]);
-
     return (
         <div className={styles["view-post__comments-element"]}>
             <div className={classNames.join(" ")}>
@@ -69,7 +60,7 @@ const PostComment = ({ comment, isAuthorOfPost }) => {
                     </div>
 
                     <div className={styles["post-comment__information"]}>
-                        <div className={styles["post-comment__time"]}>{timeAgo}</div>
+                        <div className={styles["post-comment__time"]}>{timeAgo(createdAt)}</div>
                         {!isDescription && (
                             <div className={styles["post-comment__likes"]}>
                                 Likes: {likesCount.toLocaleString()}
